@@ -1,0 +1,17 @@
+<p class="popup__text">Upload an image. We support JPG, PNG and GIF files.</p>
+<form  name="form_avatar" class="form form_avatar" id="form_avatar">
+    <div class="form__field form__field_avatar file">
+        <div class="form__input form__input_avatar">
+            <label for="avatar" class="form__label">Profile photo</label>
+            <input type="file" class="form__input-value custom-file" id="avatar" name="avatar">
+        </div>
+        <div class="form__error form__error_avatar">
+            <i class="form__error-icon form__error-icon_avatar fa-solid fa-circle-exclamation"></i>
+            <p class="form__error-text form__error-text_avatar"></p>
+        </div>
+    </div>
+    <div class="form__buttons">
+        <button type="submit" class="form__button form__button_confirm" id="confirm-button">Upload</button>
+        <button type="button" class="form__button form__button_cancel close-popup" id="cancel-button">Cancel</button>
+    </div>
+</form>
