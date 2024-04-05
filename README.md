@@ -20,6 +20,7 @@ The main goal of the project is to learn how to implement such functionality and
 
 __Languages__
 * PHP-8.2.4
+* JavaScript
 * MariaDB-10.4.28
 * HTML5
 * CSS3
@@ -70,4 +71,16 @@ To use this project, follow these steps:
 
 5. Run the project on a server.
 
+### Images
 
+![Login page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/login-page.png)
+![Signup page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/signup-page.png)
+![Signup page with errors](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/signup-page-errors.png)
+![Access recovery page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/access-recovery-page.png)
+![Change password page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/change-password-page.png)
+![Profile page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page.png)
+![Avatar dropdown1](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-avatar1.png)
+![Avatar popup](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-avatar2.png)
+![Avatar dropdown2](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-avatar3.png) 
+![Change password popup](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-password-popup.png)
+![Delete profile popup](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-delete-popup.png)
