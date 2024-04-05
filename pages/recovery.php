@@ -21,7 +21,7 @@ redirectAuthorized();
             </div>
             <div class="form__error form__error_email">
                 <i class="form__error-icon form__error-icon_email fa-solid fa-circle-exclamation"></i>
-                <p class="form__error-text form__error-text_email"></p>
+                <span class="form__error-text form__error-text_email"></span>
             </div>
         </div>
         <div class="form__options">

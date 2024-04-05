@@ -1,7 +1,7 @@
 <?php
 
 // INCLUDE CONFIG
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/env.php";
+include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/config/env.php";
 
 // INCLUDE FUNCTIONS FOR AUTHORIZATION CHECK
 include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/db-connection.php";

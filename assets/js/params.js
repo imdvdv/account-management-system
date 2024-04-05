@@ -47,7 +47,7 @@ export const validationParams = {
 export const popupParams = {
     updateAvatar: {
         contentPath: "/components/popup/update-avatar-content.html",
-        popupAction: async () => {
+        contentAction: async () => {
             if (document.querySelector(".form_avatar ")){
                 const avatarForm = document.querySelector(".form_avatar ");
                 await formHandler(avatarForm, "change-avatar");
@@ -59,7 +59,7 @@ export const popupParams = {
     },
     changePassword: {
         contentPath: "/components/popup/change-password-content.html",
-        popupAction: async () => {
+        contentAction: async () => {
             if (document.querySelector(".form_change-password")){
                 const changePasswordForm = document.querySelector(".form_change-password");
                 const options = {
@@ -75,7 +75,7 @@ export const popupParams = {
     },
     deleteProfile: {
         contentPath: "/components/popup/delete-profile-content.html",
-        popupAction: async () => {
+        contentAction: async () => {
             if (document.querySelector(".confirm-popup")) {
                 let confirmButton = document.querySelector(".confirm-popup");
                 confirmButton.addEventListener("click", async (e) => {

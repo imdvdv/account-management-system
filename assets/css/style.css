@@ -338,7 +338,7 @@ body{
     background-color: #999;
 }
 
-.form__button_cancel:hover, .modal__button_cancel:hover{
+.form__button_cancel:hover, .popup__button_cancel:hover{
     background-color: #868686;
 }
 
@@ -419,7 +419,7 @@ body{
 }
 
 .show {
-    display: flex;
+    display: block;
 }
 
 

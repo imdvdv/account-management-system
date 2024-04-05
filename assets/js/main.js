@@ -1,4 +1,4 @@
-import {validationParams, popupParams} from "./consts.js";
+import {validationParams, popupParams} from "./params.js";
 import {formHandler} from "./form-handler.js";
 import {showMessage} from "./messages-funcs.js";
 import {serverRequest} from "./server-request.js";

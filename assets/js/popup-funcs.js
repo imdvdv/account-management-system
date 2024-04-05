@@ -15,7 +15,8 @@ export function closePopup(popup = document.querySelector(".popup")){
 }
 
 export async function renderPopup (params) {
-    try{
+    if (document.querySelector(".popup")){
+    
         const popup = document.querySelector(".popup");
         const popupContent = popup.children[0].children[0];
         const closeButtonHTML = `<button class="popup__close close-popup"><i class="popup__close-icon fa-solid fa-xmark"></i></button>`;
@@ -49,11 +50,16 @@ export async function renderPopup (params) {
             }
         });
 
-        if (params.popupAction !== undefined && typeof params.popupAction === "function"){
-            await params.popupAction();
+        // Calling a callback after opening a popup
+        if (typeof params.contentAction === "function"){
+            try {
+                await params.contentAction(element);
+            } catch {
+                closePopup(popup);
+                showMessage(false, "Something went wrong. Please try again later.");
+            }
         }
-
-    } catch {
+    } else {
         showMessage(false, "Something went wrong. Please try again later.");
     }
 }

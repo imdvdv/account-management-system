@@ -1,4 +1,4 @@
-<?php
+span<?php
 
 include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/env.php";
 include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/db-connection.php";
@@ -26,7 +26,7 @@ if (isset($_GET["code"]) && !empty($_GET["code"]) && checkResetCode($_GET["code"
             </div>
             <div class="form__error form__error_password">
                 <i class="form__error-icon form__error-icon_password fa-solid fa-circle-exclamation"></i>
-                <p class="form__error-text form__error-text_password"></p>
+                <span class="form__error-text form__error-text_password"></span>
             </div>
         </div>
         <button type="submit" class="form__button form__button_change-password" name="button_change-password">Change</button>

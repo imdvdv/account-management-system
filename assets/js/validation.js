@@ -1,4 +1,4 @@
-import {validationParams} from "./consts.js";
+import {validationParams} from "./params.js";
 import {showError} from "./messages-funcs.js";
 
 export function validateFile(fileField, params = validationParams.files) {

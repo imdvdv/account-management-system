@@ -49,7 +49,7 @@ if (isAuthorized()){
                             </div>
                             <div class="form__error form__error_name">
                                 <i class="form__error-icon form__error-icon_name fa-solid fa-circle-exclamation"></i>
-                                <p class="form__error-text form__error-text_name"></p>
+                                <span class="form__error-text form__error-text_name"></span>
                             </div>
                         </div>
                         <div class="form__field form__field_email">
@@ -59,7 +59,7 @@ if (isAuthorized()){
                             </div>
                             <div class="form__error form__error_email">
                                 <i class="form__error-icon form__error-icon_email fa-solid fa-circle-exclamation"></i>
-                                <p class="form__error-text form__error-text_email"></p>
+                                <span class="form__error-text form__error-text_email"></span>
                             </div>
                         </div>
                         <button type="submit" class="form__button form__button_editor" name="button_editor">Save</button>

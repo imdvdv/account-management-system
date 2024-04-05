@@ -1,4 +1,4 @@
-import {validationParams} from "./consts.js";
+import {validationParams} from "./params.js";
 import {clearAllMessages, sessionMessageHandler} from "./messages-funcs.js";
 import {serverRequest} from "./server-request.js";
 import {showHidePassword} from "./show-hide-password.js";
