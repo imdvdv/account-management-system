@@ -30,46 +30,44 @@ __External Resources/Plugins__
 * Font awesome-6.4.0
 * Google Fonts
 
-
 ### Getting Started
 
 To use this project, follow these steps:
 1. Clone the repository to your local machine.
-2. Create a new database and import the database.sql file.
-3. Configure Database.
+2. Configure Database.
 
-   3.1 Create a new database with name `login_system` and import the prepared dump file `src/configs/login_system.sql`.
+   2.1 Create a new database with name `login_system` and import the prepared dump file `src/config/login_system.sql`.
    
-   3.2 Edit the database connection details in the `src/configs/env.php` file.
+   2.2 Edit the database connection details in the `src/config/env.php` file.
 
    ```php
-    // Database params
-   const DB_HOST = "your DB Host", // "localhost" for local server
-       DB_NAME = "your DB Name", // "login_system" if you decide to use the database dump attached to the project
-       DB_USERNAME = "your DB UserName", // "root" for phpMyAdmin
-       DB_PASSWORD = "your DB Password", // "password" or without password for phpMyAdmin
-       DB_PORT = "your DB Port"; // usually 3306
+      // Database params
+      const DB_HOST = "your DB Host", 
+          DB_NAME = "your DB Name", // "login_system" if you decide to use the database dump attached to the project
+          DB_USERNAME = "your DB UserName", 
+          DB_PASSWORD = "your DB Password", 
+          DB_PORT = "your DB Port"; // usually 3306
    ```
-4. Configure email sending using [PHPMailer](https://github.com/PHPMailer/PHPMailer).
+3. Configure email sending using [PHPMailer](https://github.com/PHPMailer/PHPMailer).
 
-    4.1 Install [composer](https://getcomposer.org/) if it is not available in your development environment
+    3.1 Install [composer](https://getcomposer.org/) if it is not available in your development environment
 
-    4.2 Edit the PHPMailer params in the `src/configs/env.php` file. 
-   ```php
-      // PHPMailer params
-      const MAIL_HOST = "your SMTP host",
-         MAIL_USERNAME = "your SMTP username", // your email address
-         MAIL_PASSWORD = "your SMTP password",
-         MAIL_PORT = "your SMTP port",
-         MAIL_CHARSET = "UTF-8",
-         MAIL_DEBUG = 0; // more details in the documentation for PHPMailer
+    3.2 Edit the PHPMailer params in the `src/config/env.php` file. 
+    ```php
+       // PHPMailer params
+       const MAIL_HOST = "your SMTP host",
+           MAIL_USERNAME = "your SMTP username", // your email address
+           MAIL_PASSWORD = "your SMTP password",
+           MAIL_PORT = "your SMTP port",
+           MAIL_CHARSET = "UTF-8",
+           MAIL_DEBUG = 0; // more details in the documentation for PHPMailer
    ```
-    4.3 Enter your domain name or localhost into the message variable in the `src/actions/access-recovery.php` file.
+    3.3 Enter YOUR DOMAIN name or localhost into the message variable in the `src/actions/access-recovery.php` file.
     ```php
       $message = 'To reset a password and create new - <a href="http://{YOUR_DOMAIN}/pages/change-password.php?code='.$code.'">click here</a>. </br>Reset your password in a hour.';
     ```
 
-5. Run the project on a server.
+4. Run the project on a server.
 
 ### Images
 
