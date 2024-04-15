@@ -1,7 +1,7 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/includes.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/update-avatar.php";
+include_once __DIR__ . "/../config/includes.php";
+include_once __DIR__ . "/../helpers/update-avatar.php";
 
 session_start();
 

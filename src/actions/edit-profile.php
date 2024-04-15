@@ -1,7 +1,7 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/includes.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/remove-extra-spaces.php";
+include_once __DIR__ . "/../config/includes.php";
+include_once __DIR__ . "/../helpers/remove-extra-spaces.php";
 
 session_start();
 

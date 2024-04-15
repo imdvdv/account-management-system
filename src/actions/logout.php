@@ -1,7 +1,7 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/env.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/db-connection.php";
+include_once __DIR__ . "/../config/env.php";
+include_once __DIR__ . "/../helpers/db-connection.php";
 
 session_start();
 

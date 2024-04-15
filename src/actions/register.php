@@ -1,9 +1,9 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/env.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/db-connection.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/validation.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/remove-extra-spaces.php";
+include_once __DIR__ . "/../config/env.php";
+include_once __DIR__ . "/../helpers/db-connection.php";
+include_once __DIR__ . "/../helpers/validation.php";
+include_once __DIR__ . "/../helpers/remove-extra-spaces.php";
 
 // Prepare a preliminary negative response in case of errors
 $statusCode = "HTTP/1.1 400 Bad Request";

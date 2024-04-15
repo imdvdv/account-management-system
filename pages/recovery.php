@@ -1,12 +1,12 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/redirect-authorized.php";
+include_once __DIR__ . "/../src/helpers/redirect-authorized.php";
 session_start();
 redirectAuthorized();
 ?>
 <!DOCTYPE html>
 <html>
-<?php require_once "{$_SERVER["DOCUMENT_ROOT"]}/components/head.html";?>
+<?php require_once __DIR__ . "/../components/head.html";?>
 <body>
 <div class="container container_form">
     <h3 class="title">Access recovery</h3>
@@ -35,6 +35,6 @@ redirectAuthorized();
         </span>
     </div>
 </div>
-<?php include_once "{$_SERVER["DOCUMENT_ROOT"]}/components/scripts.html";?>
+<?php include_once __DIR__ . "/../components/scripts.html";?>
 </body>
 </html>

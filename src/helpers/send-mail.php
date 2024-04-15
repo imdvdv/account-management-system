@@ -4,10 +4,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 //use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require_once "{$_SERVER["DOCUMENT_ROOT"]}/vendor/phpmailer/phpmailer/src/PHPMailer.php";
-require_once "{$_SERVER["DOCUMENT_ROOT"]}/vendor/phpmailer/phpmailer/src/Exception.php";
-require_once "{$_SERVER["DOCUMENT_ROOT"]}/vendor/phpmailer/phpmailer/src/SMTP.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/env.php";
+require_once __DIR__ . "/../../vendor/phpmailer/phpmailer/src/PHPMailer.php";
+require_once __DIR__ . "/../../vendor/phpmailer/phpmailer/src/Exception.php";
+require_once __DIR__ . "/../../vendor/phpmailer/phpmailer/src/SMTP.php";
+include_once __DIR__ . "/../config/env.php";
 
 function sendMail (string $to, string $subject, string $message,  $attachments = []): bool {
 

@@ -1,11 +1,11 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/env.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/db-connection.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/validation.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/get-random-code-data.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/create-reset-code.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/send-mail.php";
+include_once __DIR__ . "/../config/env.php";
+include_once __DIR__ . "/../helpers/db-connection.php";
+include_once __DIR__ . "/../helpers/validation.php";
+include_once __DIR__ . "/../helpers/get-random-code-data.php";
+include_once __DIR__ . "/../helpers/create-reset-code.php";
+include_once __DIR__ . "/../helpers/send-mail.php";
 
 // Prepare a preliminary negative response in case of errors
 $statusCode = "HTTP/1.1 400 Bad Request";

@@ -1,10 +1,9 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/env.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/db-connection.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/validation.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/check-reset-code.php";
-
+include_once __DIR__ . "/../config/env.php";
+include_once __DIR__ . "/../helpers/db-connection.php";
+include_once __DIR__ . "/../helpers/validation.php";
+include_once __DIR__ . "/../helpers/check-reset-code.php";
 session_start();
 
 // Prepare a preliminary negative response in case of errors

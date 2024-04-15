@@ -1,16 +1,16 @@
-span<?php
+<?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/env.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/db-connection.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/validation.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/check-reset-code.php";
+include_once __DIR__ . "/../src/config/env.php";
+include_once __DIR__ . "/../src/helpers/db-connection.php";
+include_once __DIR__ . "/../src/helpers/validation.php";
+include_once __DIR__ . "/../src/helpers/check-reset-code.php";
 session_start();
 
 if (isset($_GET["code"]) && !empty($_GET["code"]) && checkResetCode($_GET["code"])) {
 ?>
 <!DOCTYPE html>
 <html>
-<?php require_once "{$_SERVER["DOCUMENT_ROOT"]}/components/head.html";?>
+<?php require_once __DIR__ . "/../components/head.html";?>
 <body>
 <div class="container container_form">
     <h3 class="title">Create a new password</h3>
@@ -35,11 +35,11 @@ if (isset($_GET["code"]) && !empty($_GET["code"]) && checkResetCode($_GET["code"
         <a href="/pages/profile.php" class="redirect__link">Home</a>
     </div>
 </div>
-<?php include_once "{$_SERVER["DOCUMENT_ROOT"]}/components/scripts.html";?>
+<?php include_once __DIR__ . "/../components/scripts.html";?>
 </body>
 </html>
 <?php
 } else {
     $_SESSION["message"] = "Link incorrect or expire";
-    include_once "{$_SERVER["DOCUMENT_ROOT"]}/pages/404.php";
+    include_once __DIR__ . "/../pages/404.php";
 } ?>

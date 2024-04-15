@@ -1,8 +1,8 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/includes.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/get-user.php";
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/helpers/show-avatar.php";
+include_once __DIR__ . "/../src/config/includes.php";
+include_once __DIR__ . "/../src/helpers/get-user.php";
+include_once __DIR__ . "/../src/helpers/show-avatar.php";
 session_start();
 
 if (isAuthorized()){
@@ -14,7 +14,7 @@ if (isAuthorized()){
 ?>
 <!DOCTYPE html>
 <html>
-<?php require_once "{$_SERVER["DOCUMENT_ROOT"]}/components/head.html";?>
+<?php require_once __DIR__ . "/../components/head.html";?>
 <body>
     <div class="container container_profile">
         <h3 class="title">Profile editor</h3>
@@ -77,9 +77,9 @@ if (isAuthorized()){
             </div>
         </div>
     </div>
-    <?php include_once "{$_SERVER["DOCUMENT_ROOT"]}/components/popup/popup-layout.html";?>
+    <?php include_once __DIR__ . "/../components/popup/popup-layout.html";?>
 </body>
-<?php include_once "{$_SERVER["DOCUMENT_ROOT"]}/components/scripts.html";?>
+<?php include_once __DIR__ . "/../components/scripts.html";?>
 </html>
 <?php
 } else {
