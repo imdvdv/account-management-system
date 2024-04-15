@@ -4,7 +4,7 @@ function fileUpload (array $file, string $extendedPath = null) :string|false {
 
     // Upload path initialization
     $relativeUploadPath = "/uploads"; // default uploads path
-    $absoluteUploadPath = "{$_SERVER["DOCUMENT_ROOT"]}/uploads";
+    $absoluteUploadPath = __DIR__ . "/../../uploads";
 
     if ($extendedPath !== null){
         $relativeUploadPath = "$relativeUploadPath/$extendedPath"; // add extended path to default path if it passed
