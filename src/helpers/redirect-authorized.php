@@ -1,6 +1,6 @@
 <?php
 
-include_once "{$_SERVER["DOCUMENT_ROOT"]}/src/configs/includes.php";
+include_once __DIR__ . "/../config/includes.php";
 
 function redirectAuthorized (): void {
     if (isAuthorized()){
