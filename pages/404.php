@@ -1,7 +1,7 @@
 <?php include_once __DIR__ . "/../src/config/env.php";?>
 <!DOCTYPE html>
 <html>
-<?php require_once "{$_SERVER["DOCUMENT_ROOT"]}/components/head.html";?>
+<?php require_once __DIR__ . "/../components/head.html";?>
 <body>
     <div class="container">
         <h3 class="title" style="text-decoration-color: #d93025">404</h3>
