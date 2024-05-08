@@ -4,14 +4,14 @@
 <?php require_once __DIR__ . "/../components/head.html";?>
 <body>
     <div class="container">
-        <h3 class="title" style="text-decoration-color: #d93025">404</h3>
+        <h3 class="title" style="text-decoration-color: #d93025">Error</h3>
         <div class="message failure show">
             <p class="message-text">
                 <?php
                 if(isset($_SESSION["message"]) && !empty($_SESSION["message"])) {
                     echo $_SESSION["message"];
                 } else{
-                    echo "NOT FOUND";
+                    echo "Something went wrong. Please try again later.";
                 }
                 unset($_SESSION["message"]);
                 ?>

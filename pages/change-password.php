@@ -4,6 +4,7 @@ include_once __DIR__ . "/../src/config/env.php";
 include_once __DIR__ . "/../src/helpers/db-connection.php";
 include_once __DIR__ . "/../src/helpers/validation.php";
 include_once __DIR__ . "/../src/helpers/check-reset-code.php";
+include_once __DIR__ . "/../src/helpers/open-error-page.php";
 session_start();
 
 if (isset($_GET["code"]) && !empty($_GET["code"]) && checkResetCode($_GET["code"])) {
@@ -40,6 +41,5 @@ if (isset($_GET["code"]) && !empty($_GET["code"]) && checkResetCode($_GET["code"
 </html>
 <?php
 } else {
-    $_SESSION["message"] = "Link incorrect or expire";
-    include_once __DIR__ . "/../pages/404.php";
+    openErrorPage(404, "Link incorrect or expire");
 } ?>
