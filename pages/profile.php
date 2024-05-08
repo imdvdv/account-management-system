@@ -8,6 +8,15 @@ session_start();
 if (isAuthorized()){
     $userID = $_SESSION["user"]["id"];
     $userData = getUser($userID);
+
+    if (!$userData) {
+        if (isset($_COOKIE["token"])){
+            setcookie("token", "", time() - ONE_HOUR, "/"); 
+        }
+        unset($_SESSION["user"]);
+        header("Location:/pages/login.php");
+        exit;
+    }
     $userName = $userData["name"];
     $userEmail = $userData["email"];
     $userAvatar = $userData["avatar_path"];
