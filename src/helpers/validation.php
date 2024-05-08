@@ -1,26 +1,49 @@
 <?php
 
-function validateFields (array $inputs, array $response, array $params = VALIDATION_PARAMS["fields"]): array {
-    foreach ($inputs as $key => $value) {
-        if (empty($value)) {
-            $response["errors"][$key] = $key ." is required";
-        } else if (!preg_match($params[$key]["pattern"], $value)){
-            $response["errors"][$key] = $params[$key]["error"];
+function validateFields (array|object $inputData, array $params = VALIDATION_PARAMS["fields"]): array {
+    $result = [
+        "errors" => [],
+    ];
+
+    foreach ($inputData as $key => $value) {
+
+        if (array_key_exists($key, $params)){
+
+            $result[$key] = removeExtraSpaces($value);
+
+            if (empty($result[$key])) {
+
+                $result["errors"][$key] = "$key is required";
+
+            } elseif (!preg_match($params[$key]["pattern"], $result[$key])){
+
+                $result["errors"][$key] = $params[$key]["error"];
+
+            }
         }
+
     }
-    return $response;
+    return $result;
 }
 
-function validateFile (string $key, array $file, array $response, array $params = VALIDATION_PARAMS["files"]): array {
+function validateFile (string $key, array $file, array $params = VALIDATION_PARAMS["files"]): array {
+    $result = [];
+
     if (!in_array($file["type"], $params[$key]["requirements"]["types"])) {
-        $response["errors"][$key] = $params[$key]["errors"]["types"];
-    } else if ($params[$key]["requirements"]["size"] < $file["size"] / 1000000){
-        $response["errors"][$key] = $params[$key]["errors"]["size"];
+
+        $result[$key] = $params[$key]["errors"]["types"];
+
+    } elseif ($params[$key]["requirements"]["size"] < $file["size"] / 1000000){
+
+        $result[$key] = $params[$key]["errors"]["size"];
+
     }
-    return $response;
+    return $result;
 }
 
 function validateCode (string $code): bool{
+
     preg_match(VALIDATION_PARAMS["code"]["pattern"], $code) ? $result = true : $result = false;
+
     return $result;
 }

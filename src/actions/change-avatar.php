@@ -11,22 +11,30 @@ $statusCode = "HTTP/1.1 400 Bad Request";
 $responseData = ["status" => false];
 
 if (isAuthorized()) {
+
     $userID = $_SESSION["user"]["id"];
     $method = $_SERVER["REQUEST_METHOD"];
+
     if ($method === "POST"){
+
+        // Validation avatar
         if (isset($_FILES["avatar"], $_FILES["avatar"]["size"]) && $_FILES["avatar"]["size"] > 0) {
             $avatar = $_FILES["avatar"];
-            $responseData = validateFile("avatar", $avatar, $responseData); // updating response data after validation
-            if (!isset($responseData["errors"])){
+            $fileError = validateFile("avatar", $avatar); 
+
+            if (empty($fileError)){
 
                 // Upload a new user avatar
                 if (updateAvatar($userID, $avatar)){
+
                     $statusCode = "HTTP/1.1 200 OK";
                     $responseData = [
                         "status" => true,
                         "url" => "{$_SERVER['HTTP_REFERER']}"
                     ];
                 }
+            } else {
+                $responseData["errors"] = $fileError;
             }
         }
     } else {

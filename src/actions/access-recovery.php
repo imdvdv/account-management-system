@@ -12,17 +12,15 @@ $statusCode = "HTTP/1.1 400 Bad Request";
 $responseData = ["status" => false];
 
 $method = $_SERVER["REQUEST_METHOD"];
+
 if ($method === "POST"){
+
     if (isset($_POST["email"])) {
-        $inputs = [
-            "email" => trim($_POST["email"]),
-        ];
 
-        // Updating the response in case of validation errors
-        $responseData["message"] = "Incorrect email address";
-        $responseData = validateFields($inputs, $responseData);
+        // Validation field
+        $fieldsData = validateFields($_POST); // the function returns array includes prepared value and array of errors
 
-        if (!isset($responseData["errors"])) {
+        if (isset($fieldsData["email"], $fieldsData["errors"]) && empty($fieldsData["errors"])) {
 
             // Prepare a positive response (report successful sending even if the email address was not found in the database)
             $statusCode = "HTTP/1.1 200 OK";
@@ -35,7 +33,7 @@ if ($method === "POST"){
             // Query the database for a row with the matching email
             $pdo = getPDO();
             $query = "SELECT id FROM users WHERE email = ? LIMIT 1";
-            $values = [$inputs["email"]];
+            $values = [$fieldsData["email"]];
             $stmt = executeQueryDB($pdo, $query, $values);
 
             // Extract user data from the database if the email was found
@@ -44,7 +42,7 @@ if ($method === "POST"){
                 $code = createResetCode($userID); // create reset code for given user
 
                 // Generate and send an email with a link to the password change page using the built-in mail function
-                $to = $inputs["email"];
+                $to = $fieldsData["email"];
                 $subject = "Password recovery";
                 $message = 'To reset a password and create new - <a href="http://{YOUR_DOMAIN}/pages/change-password.php?code='.$code.'">click here</a>. </br>Reset your password in a hour.';
 
@@ -57,6 +55,8 @@ if ($method === "POST"){
                     ];
                 }
             }
+        } else {
+            $responseData["message"] = "Incorrect email address";
         }
     }
 } else {

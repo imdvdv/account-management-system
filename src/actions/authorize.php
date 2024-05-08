@@ -12,23 +12,19 @@ $responseData = ["status" => false];
 $method = $_SERVER["REQUEST_METHOD"];
 if ($method === "POST"){
     if (isset($_POST["email"], $_POST["password"])) {
-        $inputs = [
-            "email" => trim($_POST["email"]),
-            "password" => trim($_POST["password"]),
-        ];
+        $inputData = $_POST;
 
-        // Updating the response in case of validation errors
-        $responseData["message"] = "Please fill in all fields correctly";
-        $responseData = validateFields($inputs, $responseData,  VALIDATION_PARAMS["login_fields"]);
+        // Validation fields
+        $fieldsData = validateFields($inputData,  VALIDATION_PARAMS["login_fields"]); // the function returns array includes prepared value and array of errors
 
-        if (!isset($responseData["errors"])) {
+        if (isset($fieldsData["email"], $fieldsData["password"], $fieldsData["errors"]) && empty($fieldsData["errors"])) {
 
             $responseData["message"] = "Incorrect email or password"; // response message in case user's email or password is incorrect
 
             // Query the database for a row with matching the email
             $pdo = getPDO();
             $query = "SELECT * FROM users WHERE email = ? LIMIT 1";
-            $values = [$inputs["email"]];
+            $values = [$fieldsData["email"]];
             $stmt = executeQueryDB($pdo, $query, $values);
 
             // Extract user data from the database if the email was found
@@ -39,7 +35,7 @@ if ($method === "POST"){
                 $userID = $dataDB["id"];
 
                 // Verification of the input password and the password from the database
-                if (password_verify($inputs["password"], $passwordDB)) {
+                if (password_verify($fieldsData["password"], $passwordDB)) {
 
                     // Prepare a positive response
                     $statusCode = "HTTP/1.1 200 OK";
@@ -49,7 +45,7 @@ if ($method === "POST"){
                     ];
 
                     // If checkbox "remember me" was clicked set cookie with the auth token for a week
-                    if (isset($_POST["remember"]) && $_POST["remember"] == "on"){
+                    if (isset($inputData["remember"]) && $inputData["remember"] == "on"){
                         $token = createAuthToken ($userID);
                         setcookie("token", $token, time() + ONE_WEEK, "/", "", true, true);
                     }
@@ -59,6 +55,8 @@ if ($method === "POST"){
                     session_regenerate_id();
                 }
             }
+        } else{
+            $responseData["message"] = "Please fill in all fields correctly";
         }
     }
 } else {
