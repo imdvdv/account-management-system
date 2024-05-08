@@ -2,10 +2,8 @@
 
 function getPDO ():PDO {
     try {
-        $pdo = new PDO("mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME,
-            DB_USERNAME, DB_PASSWORD);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $pdo;
+        return new PDO("mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET,
+            DB_USERNAME, DB_PASSWORD, DB_OPTIONS);
     } catch(PDOException $e){
         header("HTTP/1.1 500 Internal Server Error");
         die("Connection failed : ". $e->getMessage());
