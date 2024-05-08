@@ -9,7 +9,7 @@ function checkResetCode (string $code): bool {
         $pdo = getPDO();
         $query = "SELECT * FROM reset_codes WHERE code_hash = ? LIMIT 1";
         $values = [$codeHash];
-        $stmt = executeQueryDB($pdo, $query, $values);
+        $stmt = executeQuery($pdo, $query, $values);
 
         // if the code hashes match, extract the code data from the database
         if ($stmt->rowCount() == 1) {
@@ -22,7 +22,7 @@ function checkResetCode (string $code): bool {
             if (strtotime($codeExpiryDB) <= time()) {
                 $query = "DELETE FROM reset_codes WHERE id = ? LIMIT 1";
                 $values = [$codeID];
-                executeQueryDB($pdo, $query, $values); // delete expire code data from the database
+                executeQuery($pdo, $query, $values); // delete expire code data from the database
             } else {
 
                 // Set session with the reset code for using in passwordUpdate function

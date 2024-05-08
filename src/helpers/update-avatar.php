@@ -16,7 +16,7 @@ function updateAvatar (int $userID, array $file = null): bool {
     $pdo = getPDO();
     $query = "SELECT avatar_path FROM users WHERE id = ? LIMIT 1";
     $values = [$userID];
-    $stmt = executeQueryDB($pdo, $query, $values);
+    $stmt = executeQuery($pdo, $query, $values);
 
     if ($stmt->columnCount() > 0){
         $avatarPathDB = $stmt->fetchColumn(); // extract user avatar path from the database
@@ -28,7 +28,7 @@ function updateAvatar (int $userID, array $file = null): bool {
     // Update avatar path in the users table for a given user ID
     $query = "UPDATE users SET avatar_path = ? WHERE id = ?";
     $values = [$avatarPath, $userID];
-    executeQueryDB($pdo, $query, $values);
+    executeQuery($pdo, $query, $values);
 
     return true;
 }

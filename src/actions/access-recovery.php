@@ -34,7 +34,7 @@ if ($method === "POST"){
             $pdo = getPDO();
             $query = "SELECT id FROM users WHERE email = ? LIMIT 1";
             $values = [$fieldsData["email"]];
-            $stmt = executeQueryDB($pdo, $query, $values);
+            $stmt = executeQuery($pdo, $query, $values);
 
             // Extract user data from the database if the email was found
             if ($stmt->rowCount() > 0) {

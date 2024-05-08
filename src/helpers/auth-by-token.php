@@ -9,7 +9,7 @@ function authByToken (string $token): bool {
         $pdo = getPDO();
         $query = "SELECT * FROM auth_tokens WHERE token_hash = ? LIMIT 1";
         $values = [$tokenHash];
-        $stmt = executeQueryDB($pdo, $query, $values);
+        $stmt = executeQuery($pdo, $query, $values);
 
         // Extract token data from the database if the token hash was found
         if ($stmt->rowCount() == 1) {
@@ -22,7 +22,7 @@ function authByToken (string $token): bool {
             if (strtotime($tokenExpiry) <= time()) {
                 $query = "DELETE FROM auth_tokens WHERE id = ?";
                 $values = [$tokenID];
-                executeQueryDB($pdo, $query, $values); // delete an expired token from the database
+                executeQuery($pdo, $query, $values); // delete an expired token from the database
             } else {
 
                 // Update auth token data
@@ -32,7 +32,7 @@ function authByToken (string $token): bool {
                 $newTokenExpiry = $newTokenData["codeExpiry"];
                 $query = "UPDATE auth_tokens SET token_hash = ?, token_expiry = ? WHERE id = ?";
                 $values = [$newTokenHash, $newTokenExpiry, $tokenID];
-                executeQueryDB($pdo, $query, $values);
+                executeQuery($pdo, $query, $values);
 
                 setcookie("token", $newToken, time() + ONE_WEEK, "/", "", true, true);// refresh the token cookie
 

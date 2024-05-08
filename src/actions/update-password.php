@@ -40,7 +40,7 @@ if ($method === "POST"){
                     $passwordHash = password_hash($fieldsData["password"], PASSWORD_DEFAULT);
                     $query = "UPDATE users SET password_hash = ? WHERE id = ?";
                     $values = [$passwordHash, $userID];
-                    executeQueryDB($pdo, $query, $values);
+                    executeQuery($pdo, $query, $values);
 
                     // Delete all active sessions and their tokens except the current one if it exists
                     if (isset($_COOKIE["token"]) && !empty($_COOKIE["token"])) {
@@ -49,14 +49,14 @@ if ($method === "POST"){
                         $tokenHash = hash("sha256", $token);
                         $query = "DELETE FROM auth_tokens WHERE user_id = ? AND NOT token_hash = ?";
                         $values = [$userID, $tokenHash];
-                        executeQueryDB($pdo, $query, $values);
+                        executeQuery($pdo, $query, $values);
                         $responseData["url"] = "/pages/profile.php"; // updating response url for redirect after function completion
 
                     } else {
 
                         $query = "DELETE FROM auth_tokens WHERE user_id = ?";
                         $values = [$userID];
-                        executeQueryDB($pdo, $query, $values);
+                        executeQuery($pdo, $query, $values);
                         $responseData["url"] = "/pages/login.php";
 
                     }
@@ -64,7 +64,7 @@ if ($method === "POST"){
                     // Delete data from the reset_codes table for the current user ID
                     $query = "DELETE FROM reset_codes WHERE user_id = ?";
                     $values = [$userID];
-                    executeQueryDB($pdo, $query, $values);
+                    executeQuery($pdo, $query, $values);
 
                     unset($_SESSION["reset"]); // remove the reset session
 

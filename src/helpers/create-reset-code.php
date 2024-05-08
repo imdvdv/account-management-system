@@ -12,7 +12,7 @@ function createResetCode (int $userID): string{
     $pdo = getPDO();
     $query = "SELECT * FROM reset_codes WHERE user_id = ? LIMIT 1";
     $values = [$userID];
-    $stmt = executeQueryDB($pdo, $query, $values);
+    $stmt = executeQuery($pdo, $query, $values);
 
     // If there is already a reset code row for a given user in the database, overwrite it with a new one
     if ($stmt->rowCount() == 1){
@@ -23,6 +23,6 @@ function createResetCode (int $userID): string{
         VALUES(?,?,?)";
         $values = [$userID, $codeHash, $codeExpiry];
     }
-    executeQueryDB($pdo, $query, $values);
+    executeQuery($pdo, $query, $values);
     return $code;
 }

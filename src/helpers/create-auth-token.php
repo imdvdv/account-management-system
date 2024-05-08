@@ -13,7 +13,7 @@ function createAuthToken (int $userID): string {
     $query = "INSERT INTO auth_tokens (user_id, token_hash, token_expiry)
     VALUES(?,?,?)";
     $values = [$userID, $tokenHash, $tokenExpiry];
-    executeQueryDB($pdo, $query, $values);
+    executeQuery($pdo, $query, $values);
 
     return $token;
 }

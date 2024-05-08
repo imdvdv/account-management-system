@@ -27,7 +27,7 @@ if (isAuthorized()) {
                 $pdo = getPDO();
                 $query = "UPDATE users SET name = ?, email = ? WHERE id = ?";
                 $values = [$fieldsData["name"], $fieldsData["email"], $userID];
-                executeQueryDB($pdo, $query, $values);
+                executeQuery($pdo, $query, $values);
 
                 // Prepare a positive response
                 $statusCode = "HTTP/1.1 200 OK";

@@ -10,7 +10,7 @@ function getPDO ():PDO {
     }
 }
 
-function executeQueryDB (PDO $pdo, string $query, array $values = null):PDOStatement {
+function executeQuery (PDO $pdo, string $query, array $values = null):PDOStatement {
     try {
         $stmt = $pdo->prepare($query);
         $values ? $stmt->execute($values) : $stmt->execute();

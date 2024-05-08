@@ -25,7 +25,7 @@ if ($method === "POST"){
             $pdo = getPDO();
             $query = "SELECT email FROM users WHERE email = ? LIMIT 1";
             $values = [$fieldsData["email"]];
-            $stmt = executeQueryDB($pdo, $query, $values);
+            $stmt = executeQuery($pdo, $query, $values);
 
             if ($stmt->rowCount() > 0) {
                 $responseData["errors"]["email"] = "this email already exists";
@@ -37,7 +37,7 @@ if ($method === "POST"){
                 $query = "INSERT INTO users (`name`, `email`, `password_hash`)
                 VALUES(?,?,?)";
                 $values = [$fieldsData["name"], $fieldsData["email"], $passwordHash];
-                executeQueryDB($pdo, $query, $values);
+                executeQuery($pdo, $query, $values);
 
                 // Prepare a positive response
                 $statusCode = "HTTP/1.1 201 Created";

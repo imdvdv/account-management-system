@@ -21,7 +21,7 @@ if ($method === "POST"){
         $pdo = getPDO();
         $query = "DELETE FROM auth_tokens WHERE token_hash = ? LIMIT 1";
         $values = [$tokenHash];
-        executeQueryDB($pdo, $query, $values);
+        executeQuery($pdo, $query, $values);
 
         setcookie("token", "", time() - ONE_HOUR, "/"); // clear token cookie
     }
