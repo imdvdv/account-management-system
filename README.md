@@ -46,7 +46,9 @@ To use this project, follow these steps:
           DB_NAME = "your DB Name", // "login_system" if you decide to use the database dump attached to the project
           DB_USERNAME = "your DB UserName", 
           DB_PASSWORD = "your DB Password", 
-          DB_PORT = "your DB Port"; // usually 3306
+          DB_PORT = "your DB Port",
+          DB_CHARSET = "utf8",
+          DB_OPTIONS = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];
    ```
 3. Configure email sending using [PHPMailer](https://github.com/PHPMailer/PHPMailer).
 
