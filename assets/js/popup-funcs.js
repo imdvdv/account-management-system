@@ -53,7 +53,7 @@ export async function renderPopup (params) {
         // Calling a callback after opening a popup
         if (typeof params.contentAction === "function"){
             try {
-                await params.contentAction(element);
+                await params.contentAction();
             } catch {
                 closePopup(popup);
                 showMessage(false, "Something went wrong. Please try again later.");
