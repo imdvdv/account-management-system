@@ -26,17 +26,35 @@ function validateFields (array|object $inputData, array $params = VALIDATION_PAR
     return $result;
 }
 
-function validateFile (string $key, array $file, array $params = VALIDATION_PARAMS["files"]): array {
-    $result = [];
+function validateFiles (array $files, array $params = VALIDATION_PARAMS["files"]): array {
+    $result = [
+        "errors" => [],
+    ];
 
-    if (!in_array($file["type"], $params[$key]["requirements"]["types"])) {
+    foreach ($files as $key => $value) {
 
-        $result[$key] = $params[$key]["errors"]["types"];
+        if (array_key_exists($key, $params)){
 
-    } elseif ($params[$key]["requirements"]["size"] < $file["size"] / 1000000){
+            $result[$key] = $value;
+            
+            if (isset($value["size"]) && $value["size"] > 0) {
+                
+                if (!in_array($value["type"], $params[$key]["requirements"]["types"])) {
 
-        $result[$key] = $params[$key]["errors"]["size"];
+                    $result[$key] = $params[$key]["errors"]["types"];
+            
+                } elseif ($params[$key]["requirements"]["size"] < $value["size"] / 1000000){
+            
+                    $result[$key] = $params[$key]["errors"]["size"];
+            
+                }
+            
+            } else {
+                $result["errors"][$key] = "$key file not found";
+            }
 
+        
+        }
     }
     return $result;
 }

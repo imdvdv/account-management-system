@@ -18,14 +18,14 @@ if (isAuthorized()) {
     if ($method === "POST"){
 
         // Validation avatar
-        if (isset($_FILES["avatar"], $_FILES["avatar"]["size"]) && $_FILES["avatar"]["size"] > 0) {
-            $avatar = $_FILES["avatar"];
-            $fileError = validateFile("avatar", $avatar); 
+        if (isset($_FILES["avatar"])) {
 
-            if (empty($fileError)){
+            $filesData = validateFiles($_FILES); // the function will return an array with files and an array of errors
+
+            if (isset($filesData["avatar"]) && !isset($filesData["errors"]["avatar"])){
 
                 // Upload a new user avatar
-                if (updateAvatar($userID, $avatar)){
+                if (updateAvatar($userID, $filesData["avatar"])){
 
                     $statusCode = "HTTP/1.1 200 OK";
                     $responseData = [
@@ -34,7 +34,7 @@ if (isAuthorized()) {
                     ];
                 }
             } else {
-                $responseData["errors"] = $fileError;
+                $responseData["errors"] = $filesData["errors"];
             }
         }
     } else {
