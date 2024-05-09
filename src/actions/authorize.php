@@ -12,10 +12,9 @@ $responseData = ["status" => false];
 $method = $_SERVER["REQUEST_METHOD"];
 if ($method === "POST"){
     if (isset($_POST["email"], $_POST["password"])) {
-        $inputData = $_POST;
 
         // Validation fields
-        $fieldsData = validateFields($inputData,  VALIDATION_PARAMS["login_fields"]); // the function returns array includes prepared value and array of errors
+        $fieldsData = validateFields($_POST,  VALIDATION_PARAMS["login_fields"]); // the function returns array includes prepared value and array of errors
 
         if (isset($fieldsData["email"], $fieldsData["password"], $fieldsData["errors"]) && empty($fieldsData["errors"])) {
 
