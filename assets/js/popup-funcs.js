@@ -14,7 +14,7 @@ export function closePopup(popup = document.querySelector(".popup")){
     }
 }
 
-export async function renderPopup (params) {
+export async function renderPopup (params, element = null) {
     if (document.querySelector(".popup")){
     
         const popup = document.querySelector(".popup");
@@ -53,7 +53,7 @@ export async function renderPopup (params) {
         // Calling a callback after opening a popup
         if (typeof params.contentAction === "function"){
             try {
-                await params.contentAction();
+                await params.contentAction(element);
             } catch {
                 closePopup(popup);
                 showMessage(false, "Something went wrong. Please try again later.");
