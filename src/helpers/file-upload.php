@@ -12,8 +12,8 @@ function fileUpload (array $file, string $extendedPath = null) :string|false {
     }
 
     // Check the uploads directory exist and make it if it's not
-    if (!is_dir($relativeUploadPath)){
-        mkdir($relativeUploadPath, 0777, true);
+    if (!is_dir($absoluteUploadPath)){
+        mkdir($absoluteUploadPath, 0777, true);
     }
     // Prepare the file data
     $fileExtension = pathinfo($file["name"], PATHINFO_EXTENSION);
@@ -23,7 +23,7 @@ function fileUpload (array $file, string $extendedPath = null) :string|false {
 
     // If the file was successfully uploaded to the server the function will return its path, otherwise will return false
     if (move_uploaded_file($file["tmp_name"], $absoluteFilePath)){
-        return $relativeFilePath ;
+        return $relativeFilePath;
     }
     return false;
 }
