@@ -2,25 +2,26 @@
 
 ### Project Overview
 
-This project is a registration, login and personal profile management system. The backend of the project is written in PHP, and the frontend in Javascript.
-The main goal of the project is to learn how to implement such functionality and understand how they work without using frameworks and third-party libraries.
+The project includes all the basic operations with a personal account such as registration, login, logout, editing user data, password recovery and deletion. Implemented on the MVC architecture using a functional approach. The main goal of the project is to learn how to implement such functionality and understand how it works without using frameworks and third-party libraries.
 
 ### Features
 
-* __Registration:__ Users can register by providing a username, password, and email address.
-* __Login:__ Registered users can log in using their username and password.
-* __Remember Me:__ Users can visit his profile after terminating the session and closing the browser without re-entering the password using cookies.
-* __Password recovery:__ Users can reset their password if they forget it by providing their email address. Delivery of letters for convenience and reliability is implemented using the PHPMailer library
-* __Profile editing:__ Users can edit their profile information, including their username, email address, and profile picture or delete own profile.
-* __Logout:__ Users can log out of their session and delete cookies if they exist.
-* __Validation:__ The project implements a custom validation of input data before sending using JavaScript and additional validation on the server side. In case of errors, error messages are displayed each under its own field.
-* __Popup:__ The project implements a custom popup for displaying messages or forms that the function retrieves using fetch JS from the components directory.
+* __Friendly URLs:__ .htaccess file provides simple and short URLs, sparing the project from file names in the address bar.
+* __Routing:__ Implemented simple routing that checks routes, HTTP methods, and also calls the action of the specified controller and middleware.
+* __Sessions:__ Using built-in PHP cookie and session, a system is implemented that remembers the user by a unique token key.
+* __CRUD:__ The project implements operations with database for adding, editing, deleting and reading data.
+* __Templating:__ Templating on PHP allowing to render pages and parts of content.
+* __Popup:__ Popup window for displaying messages or forms, implemented in the built-in templating.
+* __Dropdown:__ A function implemented on the built-in templating that renders a drop-down list with the specified parameters.
+* __Validation:__ Input validation system. In case of errors, error messages are displayed each under its own field.
+* __Logging:__ Error logging system where log files are automatically entered by creation date into the log folder.
+* __Autoload:__ Autoloading files with composer allows you to take full advantage of namespaces.
+* __Sending emails:__ The system of sending messages to restore access to the account is carried out using PHPMailer.
 
 ### Components
 
 __Languages__
 * PHP-8.2.4
-* JavaScript
 * MariaDB-10.4.28
 * HTML5
 * CSS3
@@ -30,57 +31,70 @@ __External Resources/Plugins__
 * Font awesome-6.4.0
 * Google Fonts
 
-### Getting Started
+### Getting Started 
 
 To use this project, follow these steps:
 1. Clone the repository to your local machine.
-2. Configure Database.
+2. Set the base URL of your project in the `config/settings.php`.
+```php
+const BASE_URL = 'YOUR_BASE_URL'; // http://localhost (for example)
+```
+3. Configure Database. 
 
-   2.1 Create a new database with name `login_system` and import the prepared dump file `src/config/login_system.sql`.
+   3.1 Create a new database with name `ams` and import the prepared dump file `config/ams.sql`.
    
-   2.2 Edit the database connection details in the `src/config/env.php` file.
-
+   3.2 Edit the database connection details in the `config/settings.php` file.
    ```php
-      // Database params
-      const DB_HOST = "your DB Host", 
-          DB_NAME = "your DB Name", // "login_system" if you decide to use the database dump attached to the project
-          DB_USERNAME = "your DB UserName", 
-          DB_PASSWORD = "your DB Password", 
-          DB_PORT = "your DB Port",
-          DB_CHARSET = "utf8",
-          DB_OPTIONS = [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC];
+    const DB_SETTINGS = [
+        'driver' => 'mysql',
+        'host' => 'your_host',
+        'db_name' => 'your_db_name', // ams
+        'username' => 'your_username',
+        'password' => 'your_password',
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'port' => 'your_port', // 3306
+        'prefix' => '',
+        'options' => [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ],
+    ];
    ```
-3. Configure email sending using [PHPMailer](https://github.com/PHPMailer/PHPMailer).
-
-    3.1 Install [composer](https://getcomposer.org/) if it is not available in your development environment
-
-    3.2 Edit the PHPMailer params in the `src/config/env.php` file. 
-    ```php
-       // PHPMailer params
-       const MAIL_HOST = "your SMTP host",
-           MAIL_USERNAME = "your SMTP username", // your email address
-           MAIL_PASSWORD = "your SMTP password",
-           MAIL_PORT = "your SMTP port",
-           MAIL_CHARSET = "UTF-8",
-           MAIL_DEBUG = 0; // more details in the documentation for PHPMailer
-   ```
-    3.3 Enter YOUR DOMAIN name or localhost into the message variable in the `src/actions/access-recovery.php` file.
-    ```php
-      $message = 'To reset a password and create new - <a href="http://{YOUR_DOMAIN}/pages/change-password.php?code='.$code.'">click here</a>. </br>Reset your password in a hour.';
-    ```
-
-4. Run the project on a server.
+4. Configure email sending using [PHPMailer](https://github.com/PHPMailer/PHPMailer). Edit the mail settings in the `config/settings.php` file.
+```php
+  const MAIL_SETTINGS = [
+    'host' => 'your_host', // smtp.gmail.com (for example)
+    'auth' => true,
+    'username' => 'your_username', // email address
+    'password' => 'your_password',
+    'secure' => null, // tls or ssl
+    'port' => 465,
+    'from_email' => 'your_email_address', // email
+    'from_name' => APP_TITLE ?? 'App',
+    'is_html' => true,
+    'charset' => 'UTF-8',
+    'debug' => 0, // 0 - 4
+];
+```
+5. Install [Composer](https://getcomposer.org/) if you haven't already and run the following command in the project root using terminal.
+```powershell
+composer dump-autoload
+```
+6. Run the project on a server.
 
 ### Images
+![signup page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/signup-page.png)
+![signup page with errors](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/signup-page-errors.png)
+![login page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/login-page.png)
+![forgot page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/access-recovery-page.png)
+![change password page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/change-password-page.png)
+![profile page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/profile-page.png)
+![profile avatar1](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/profile-avatar1.png)
+![profile avatar2](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/profile-avatar2.png)
+![profile avatar3](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/profile-avatar3.png)
+![reset sessions popup](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/reset-sessions-popup.png)
+![delete profile popup](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/delete-profile-popup.png)
 
-![Login page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/login-page.png)
-![Signup page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/signup-page.png)
-![Signup page with errors](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/signup-page-errors.png)
-![Access recovery page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/access-recovery-page.png)
-![Change password page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/change-password-page.png)
-![Profile page](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page.png)
-![Avatar dropdown1](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-avatar1.png)
-![Avatar popup](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-avatar2.png)
-![Avatar dropdown2](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-avatar3.png) 
-![Change password popup](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-password-popup.png)
-![Delete profile popup](https://github.com/imdvdv/PHP-JS-Login-system/blob/master/assets/img/profile-page-delete-popup.png)
+
+

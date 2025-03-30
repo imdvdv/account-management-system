@@ -1,0 +1,3 @@
+<p class="popup__text"><?= $popup_text ?? '' ?></p>
+<?= $popup_form ?? '' ?>
+<?= $popup_buttons ?? '' ?>

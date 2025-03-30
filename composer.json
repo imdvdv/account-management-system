@@ -1,5 +1,29 @@
 {
+    "autoload": {
+        "files": [
+            "src/core/db.php",
+            "src/core/router.php",
+            "src/core/request.php",
+            "src/core/response.php",
+            "src/core/validation.php",
+            "src/core/model.php",
+            "src/core/view.php",
+            "src/core/controller.php",
+            "src/core/session.php",
+            "src/core/cookie.php",
+            "src/core/popup.php",
+            "src/core/dropdown.php",
+            "src/core/middleware/auth.php",
+            "src/core/middleware/guest.php",
+            "src/core/middleware/allowed_referer.php",
+            "src/core/helpers.php",
+            "src/app/models/user.php",
+            "src/app/models/auth_token.php",
+            "src/app/models/reset_code.php"
+        ]
+    },
     "require": {
+        "php": ">=8.0",
         "phpmailer/phpmailer": "^6.9"
     }
 }

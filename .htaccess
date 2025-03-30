@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Redirect Trailing Slashes
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [L,R=301]
+
+# Redirect all requests to public directory
+RewriteRule (.*) public/$1
