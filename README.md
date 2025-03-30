@@ -69,7 +69,7 @@ const BASE_URL = 'YOUR_BASE_URL'; // http://localhost (for example)
     'username' => 'your_username', // email address
     'password' => 'your_password',
     'secure' => null, // tls or ssl
-    'port' => 465,
+    'port' => your_port, // 465 (for example)
     'from_email' => 'your_email_address', // email
     'from_name' => APP_TITLE ?? 'App',
     'is_html' => true,
@@ -84,17 +84,14 @@ composer dump-autoload
 6. Run the project on a server.
 
 ### Images
-![signup page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/signup-page.png)
-![signup page with errors](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/signup-page-errors.png)
-![login page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/login-page.png)
-![forgot page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/access-recovery-page.png)
-![change password page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/change-password-page.png)
-![profile page](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/profile-page.png)
-![profile avatar1](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/profile-avatar1.png)
-![profile avatar2](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/profile-avatar2.png)
-![profile avatar3](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/profile-avatar3.png)
-![reset sessions popup](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/reset-sessions-popup.png)
-![delete profile popup](https://github.com/imdvdv/account-management-system/blob/master/assets/img/preview/delete-profile-popup.png)
-
-
-
+![signup page](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/signup-page.png)
+![signup page with errors](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/signup-page-errors.png)
+![login page](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/login-page.png)
+![forgot page](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/access-recovery-page.png)
+![change password page](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/change-password-page.png)
+![profile page](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/profile-page.png)
+![profile avatar1](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/profile-avatar1.png)
+![profile avatar2](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/profile-avatar2.png)
+![profile avatar3](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/profile-avatar3.png)
+![reset sessions popup](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/reset-sessions-popup.png)
+![delete profile popup](https://github.com/imdvdv/account-management-system/blob/master/public/assets/img/preview/delete-profile-popup.png)
